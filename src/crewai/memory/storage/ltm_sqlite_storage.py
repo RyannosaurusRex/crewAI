@@ -2,12 +2,12 @@ import json
 import sqlite3
 from typing import Any, Dict, List, Optional, Union
 
-from crewai.memory.storage.interface import AbstractLTMStorage
+from crewai.memory.storage.interface import LTMStorage
 from crewai.utilities import Printer
 from crewai.utilities.paths import db_storage_path
 
 
-class LTMSQLiteStorage(AbstractLTMStorage):
+class LTMSQLiteStorage(LTMStorage):
     """
     An updated SQLite storage class for LTM data storage.
     """

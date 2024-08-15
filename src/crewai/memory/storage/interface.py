@@ -14,7 +14,7 @@ class Storage:
         pass
 
 
-class AbstractLTMStorage:
+class LTMStorage:
     """Abstract base class for Long-term storage"""
 
     def save(
