@@ -1,4 +1,4 @@
-from typing import Any, Dict
+from typing import Any, Dict, List, Optional, Union
 
 
 class Storage:
@@ -8,6 +8,27 @@ class Storage:
         pass
 
     def search(self, key: str) -> Dict[str, Any]:  # type: ignore
+        pass
+
+    def reset(self) -> None:
+        pass
+
+
+class AbstractLTMStorage:
+    """Abstract base class for Long-term storage"""
+
+    def save(
+        self,
+        task_description: str,
+        metadata: Dict[str, Any],
+        datetime: str,
+        score: Union[int, float],
+    ) -> None:
+        pass
+
+    def load(
+        self, task_description: str, latest_n: int
+    ) -> Optional[List[Dict[str, Any]]]:
         pass
 
     def reset(self) -> None:

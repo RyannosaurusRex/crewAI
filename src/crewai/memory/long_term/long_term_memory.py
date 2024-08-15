@@ -3,6 +3,7 @@ from typing import Any, Dict
 from crewai.memory.long_term.long_term_memory_item import LongTermMemoryItem
 from crewai.memory.memory import Memory
 from crewai.memory.storage.ltm_sqlite_storage import LTMSQLiteStorage
+from crewai.memory.storage.interface import AbstractTMStorage
 
 
 class LongTermMemory(Memory):
@@ -14,8 +15,10 @@ class LongTermMemory(Memory):
     LongTermMemoryItem instances.
     """
 
-    def __init__(self):
-        storage = LTMSQLiteStorage()
+    def __init__(
+        self, long_term_storage: AbstractTMStorage = LTMSQLiteStorage()
+    ) -> None:
+        storage = long_term_storage
         super().__init__(storage)
 
     def save(self, item: LongTermMemoryItem) -> None:  # type: ignore # BUG?: Signature of "save" incompatible with supertype "Memory"
